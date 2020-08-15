@@ -43,7 +43,7 @@ mochawesome-report-generator (marge)
 
 Install mochawesome-report-generator package
 ```bash
-npm install -g mochawesome-report-generator
+npm install -g mocha-report-generator
 ```
 
 Run the command
