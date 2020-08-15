@@ -1,4 +1,4 @@
-mochawesome-report-generator (marge)
+mocha-report-v2 (marge)
 ============================
 [![npm](https://img.shields.io/npm/v/mochawesome-report-generator.svg)](http://www.npmjs.com/package/mochawesome-report-generator) [![Build Status](https://img.shields.io/travis/adamgruber/mochawesome-report-generator/master.svg)](https://travis-ci.org/adamgruber/mochawesome-report-generator) [![Test Coverage](https://api.codeclimate.com/v1/badges/613427ae1baabfb75360/test_coverage)](https://codeclimate.com/github/adamgruber/mochawesome-report-generator/test_coverage) [![Maintainability](https://api.codeclimate.com/v1/badges/613427ae1baabfb75360/maintainability)](https://codeclimate.com/github/adamgruber/mochawesome-report-generator/maintainability)
 
@@ -41,9 +41,9 @@ mochawesome-report-generator (marge)
 
 ## CLI Usage
 
-Install mochawesome-report-generator package
+Install mocha-report-v2 package
 ```bash
-npm install -g mocha-report-generator
+npm install -g mocha-report-v2
 ```
 
 Run the command
