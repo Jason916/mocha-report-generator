@@ -1,6 +1,6 @@
 {
   "name": "mocha-report-v2",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Generates gorgeous HTML reports from mochawesome reporter.",
   "scripts": {
     "lint": "eslint bin/src lib/src src test --ext js,jsx",
@@ -119,11 +119,11 @@
     "enzyme-adapter-react-16": "^1.0.2",
     "eslint": "4.13.1",
     "eslint-config-airbnb": "^16.1.0",
-    "eslint-loader": "^1.7.1",
+    "eslint-loader": "^2.1.2",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.5.1",
-    "extract-text-webpack-plugin": "^3.0.2",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "faker": "^4.1.0",
     "file-loader": "^1.1.5",
     "highlight.js": "^9.7.0",

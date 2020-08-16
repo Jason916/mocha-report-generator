@@ -1,6 +1,11 @@
 /**
  * Created by jasonxu on 2020/8/14.
  */
+/**
+ * Returns the reason of error
+ * @param {String} message Info of error stack
+ * @returns {String} reason of error
+ */
 function getReason(message) {
   if (message.includes('AssertionError') && message.includes('Found') && message.includes('expected')) {
     return '断言错误：期望的文本或数值与实际值不匹配';
@@ -26,8 +31,11 @@ function getReason(message) {
   if (message.includes('CypressError') && message.includes('cannot execute commands outside a running test')) {
     return '运行错误：cypress命令报错';
   }
-  if (message.includes('CypressError') && message.includes('Timed out remote page to load')) {
+  if (message.includes('CypressError') && message.includes('Timed out') && message.includes('remote page to load')) {
     return '运行错误：页面加载超时';
+  }
+  if (message.includes('CypressError') && message.includes('`cy.request()` failed')) {
+    return '运行错误：请求超时'
   }
   return message;
 }
