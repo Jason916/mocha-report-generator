@@ -13,6 +13,7 @@ class Test extends PureComponent {
   constructor() {
     super();
     this.toggleExpandedState = this.toggleExpandedState.bind(this);
+    this.toggleScreenState = this.toggleScreenState.bind(this);
   }
 
   static propTypes = {
@@ -25,13 +26,21 @@ class Test extends PureComponent {
   }
 
   state = {
-    expanded: false
+    expanded: false,
+    displayScreen: false
   }
 
   toggleExpandedState() {
     const { test, enableCode } = this.props;
     if ((enableCode && test.pass) || !!test.context || test.fail || test.isHook) {
       this.setState({ expanded: !this.state.expanded });
+    }
+  }
+
+  toggleScreenState() {
+    const { test } = this.props;
+    if (!!test.context || test.fail || test.isHook) {
+      this.setState({ displayScreen: !this.state.displayScreen });
     }
   }
 
@@ -83,9 +92,19 @@ class Test extends PureComponent {
 
     return (
       <section id={ uuid } className={ cxname }>
-        <header className={ cx('header') } onClick={ this.toggleExpandedState }>
+        <header className={ cx('header')} >
           { testIcon() }
           <h4 className={ cx('title') } title={ title }>{ title }</h4>
+          { enableCode && (<button
+            type="button"
+            onClick={this.toggleExpandedState}>
+            详细信息
+          </button>) }
+          { !!context && (<button
+            type="button"
+            onClick={this.toggleScreenState}>
+            错误截图
+          </button>) }
           <div className={ cx('info') }>
             { !!context && <Icon name='chat_bubble_outline' className={ cx('context-icon') } size={ 18 } /> }
             { !isHook && <Duration className={ cx('duration') } timer={ duration } /> }
@@ -98,6 +117,11 @@ class Test extends PureComponent {
             { <CodeSnippet className={ cx('code-snippet') } code={ err.estack } highlight={ false } label='Stack Trace' /> }
             { <CodeSnippet className={ cx('code-snippet') } code={ err.diff } lang='diff' label='Diff' /> }
             { enableCode && <CodeSnippet className={ cx('code-snippet') } code={ code } label='Test Code' /> }
+            { !!context && <TestContext context={ context } /> }
+          </div>
+        }
+        { this.state.displayScreen &&
+          <div className={ cx('body') }>
             { !!context && <TestContext context={ context } /> }
           </div>
         }

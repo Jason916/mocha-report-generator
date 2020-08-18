@@ -138,12 +138,16 @@
 }
 
 .body {
-  display: none;
   background-color: var(--grey50);
   border: 1px solid var(--grey50);
   border-radius: 4px;
 
   @nest .expanded & {
+    display: block;
+    margin: 0 16px 10px 13px;
+  }
+
+  @nest .displayScreen & {
     display: block;
     margin: 0 16px 10px 13px;
   }
