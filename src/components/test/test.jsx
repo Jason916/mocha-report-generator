@@ -5,7 +5,7 @@ import { Duration, Icon } from 'components';
 import { CodeSnippet, TestContext } from 'components/test';
 import classNames from 'classnames/bind';
 import styles from './test.css';
-import getReason from '../../js/getErrorReason'
+import getReason from '../../js/getErrorReason';
 
 const cx = classNames.bind(styles);
 
@@ -92,19 +92,23 @@ class Test extends PureComponent {
 
     return (
       <section id={ uuid } className={ cxname }>
-        <header className={ cx('header')} >
+        <header className={ cx('header') } >
           { testIcon() }
           <h4 className={ cx('title') } title={ title }>{ title }</h4>
-          { enableCode && (<button
-            type="button"
-            onClick={this.toggleExpandedState}>
-            详细信息
-          </button>) }
-          { !!context && (<button
-            type="button"
-            onClick={this.toggleScreenState}>
-            错误截图
-          </button>) }
+          { !!context && (
+            <button
+              type='button'
+              onClick={ this.toggleScreenState }>
+              错误截图
+            </button>
+          ) }
+          { !!err.message && (
+            <button
+              type='button'
+              onClick={ this.toggleExpandedState }>
+              详细信息
+            </button>
+          ) }
           <div className={ cx('info') }>
             { !!context && <Icon name='chat_bubble_outline' className={ cx('context-icon') } size={ 18 } /> }
             { !isHook && <Duration className={ cx('duration') } timer={ duration } /> }
