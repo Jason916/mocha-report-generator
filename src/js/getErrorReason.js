@@ -37,6 +37,9 @@ function getReason(message) {
   if (message.includes('CypressError') && message.includes('`cy.request()` failed')) {
     return '运行错误：请求超时'
   }
+  if (message.includes('CypressError') && message.includes('timed out waiting')) {
+    return '运行错误：执行超时'
+  }
   return message;
 }
 

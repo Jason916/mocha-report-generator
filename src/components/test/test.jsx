@@ -94,7 +94,7 @@ class Test extends PureComponent {
       <section id={ uuid } className={ cxname }>
         <header className={ cx('header') } >
           { testIcon() }
-          <h4 className={ cx('title') } title={ title }>{ title }</h4>
+          <h4 className={ cx('title') } title={ title }>{ title.split('@')[0] }</h4>
           { !!context && (
             <button
               type='button'
@@ -121,7 +121,6 @@ class Test extends PureComponent {
             { <CodeSnippet className={ cx('code-snippet') } code={ err.estack } highlight={ false } label='Stack Trace' /> }
             { <CodeSnippet className={ cx('code-snippet') } code={ err.diff } lang='diff' label='Diff' /> }
             { enableCode && <CodeSnippet className={ cx('code-snippet') } code={ code } label='Test Code' /> }
-            { !!context && <TestContext context={ context } /> }
           </div>
         }
         { this.state.displayScreen &&

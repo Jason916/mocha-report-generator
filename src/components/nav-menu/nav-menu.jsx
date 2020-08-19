@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react';
 import { format } from 'date-fns';
-import find from 'lodash/find';
-import { Icon, ToggleSwitch, DropdownSelector } from 'components';
+import { Icon, ToggleSwitch } from 'components';
 import { NavMenuItem } from 'components/nav-menu';
 import classNames from 'classnames/bind';
 import styles from './nav-menu.css';
@@ -17,10 +16,7 @@ class NavMenu extends Component {
       allSuites: PropTypes.array,
       closeSideNav: PropTypes.func,
       reportTitle: PropTypes.string,
-      setShowHooks: PropTypes.func,
       showFailed: PropTypes.bool,
-      showHooks: PropTypes.string,
-      showHooksOptions: PropTypes.array,
       showPassed: PropTypes.bool,
       showPending: PropTypes.bool,
       showSkipped: PropTypes.bool,
@@ -35,10 +31,7 @@ class NavMenu extends Component {
       allSuites,
       closeSideNav,
       reportTitle,
-      setShowHooks,
       showFailed,
-      showHooks,
-      showHooksOptions,
       showPassed,
       showPending,
       showSkipped,
@@ -54,13 +47,6 @@ class NavMenu extends Component {
       showSkipped
     };
 
-    const showHooksOpts = showHooksOptions.map(opt => ({
-      title: `${opt.charAt(0).toUpperCase()}${opt.slice(1)}`,
-      value: opt
-    }));
-
-    const showHooksSelected = find(showHooksOpts, { value: showHooks });
-
     return (
       <div className={ cx('wrap', { open: sideNavOpen }) }>
         <div onClick={ closeSideNav } className={ cx('overlay') } />
@@ -71,13 +57,13 @@ class NavMenu extends Component {
           <div className={ cx('section') }>
             <h3 className={ cx('title') }>{ reportTitle }</h3>
             <h6 className={ cx('date') }>
-              { format(stats.end, 'dddd, MMMM D, YYYY h:mma') }
+              { format(stats.end, 'YYYY 年 MM 月 D 日, HH:mm:ss') }
             </h6>
           </div>
           <div className={ cx('section') }>
             <ToggleSwitch
               className={ cx('control') }
-              label='Show Passed'
+              label='显示正确用例'
               labelClassName={ cx('control-label') }
               icon='check'
               iconClassName={ cx('toggle-icon-passed') }
@@ -87,7 +73,7 @@ class NavMenu extends Component {
 
             <ToggleSwitch
               className={ cx('control') }
-              label='Show Failed'
+              label='显示失败用例'
               labelClassName={ cx('control-label') }
               icon='close'
               iconClassName={ cx('toggle-icon-failed') }
@@ -97,7 +83,7 @@ class NavMenu extends Component {
 
             <ToggleSwitch
               className={ cx('control') }
-              label='Show Pending'
+              label='显示待评审用例'
               labelClassName={ cx('control-label') }
               icon='pause'
               iconClassName={ cx('toggle-icon-pending') }
@@ -107,7 +93,7 @@ class NavMenu extends Component {
 
             <ToggleSwitch
               className={ cx('control') }
-              label='Show Skipped'
+              label='显示跳过的用例'
               labelClassName={ cx('control-label') }
               icon='stop'
               iconClassName={ cx('toggle-icon-skipped') }
@@ -115,13 +101,6 @@ class NavMenu extends Component {
               disabled={ stats.skipped === 0 }
               toggleFn={ () => (toggleFilter('showSkipped')) } />
 
-            <DropdownSelector
-              className={ cx('control') }
-              label='Show Hooks'
-              labelClassName={ cx('control-label') }
-              selected={ showHooksSelected }
-              selections={ showHooksOpts }
-              onSelect={ item => setShowHooks(item.value) } />
           </div>
           <div className={ cx('section') }>
             { !!allSuites && allSuites.map(suite => (
