@@ -110,7 +110,6 @@ class Test extends PureComponent {
             </button>
           ) }
           <div className={ cx('info') }>
-            { !!context && <Icon name='chat_bubble_outline' className={ cx('context-icon') } size={ 18 } /> }
             { !isHook && <Duration className={ cx('duration') } timer={ duration } /> }
             { !isHook && <Icon name='timer' className={ cx('duration-icon', speed) } size={ 18 } /> }
           </div>

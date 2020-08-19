@@ -11,31 +11,31 @@ const QuickSummary = ({ stats }) => {
   return (
     <div className={ cx('cnt') }>
       <ul className={ cx('list') }>
-        <li className={ cx('item', 'duration') } title='Duration'>
+        <li className={ cx('item', 'duration') } title='运行用时'>
           <Icon name='timer' className={ cx('icon') } />
           <Duration unitsClassName={ cx('duration-units') } timer={ duration } isSummary />
         </li>
-        <li className={ cx('item', 'suites') } title='Suites'>
+        <li className={ cx('item', 'suites') } title='测试集数量'>
           <Icon name='library_books' className={ cx('icon') } />{ suites }
         </li>
-        <li className={ cx('item', 'tests') } title='Tests'>
+        <li className={ cx('item', 'tests') } title='测试用例数'>
           <Icon name='assignment' className={ cx('icon') } />{ testsRegistered }
         </li>
       </ul>
       <ul className={ cx('list') }>
-        <li className={ cx('item', 'passes') } title='Passed'>
+        <li className={ cx('item', 'passes') } title='通过'>
           <Icon name='check' className={ cx('icon', 'circle-icon') } />{ passes }
         </li>
-        <li className={ cx('item', 'failures') } title='Failed'>
+        <li className={ cx('item', 'failures') } title='失败'>
           <Icon name='close' className={ cx('icon', 'circle-icon') } />{ failures }
         </li>
         { !!pending && (
-          <li className={ cx('item', 'pending') } title='Pending'>
+          <li className={ cx('item', 'pending') } title='待评审'>
             <Icon name='pause' className={ cx('icon', 'circle-icon') } />{ pending }
           </li>)
         }
         { !!skipped && (
-          <li className={ cx('item', 'skipped') } title='Skipped'>
+          <li className={ cx('item', 'skipped') } title='跳过'>
             <Icon name='stop' className={ cx('icon', 'circle-icon') } />{ skipped }
           </li>)
         }
