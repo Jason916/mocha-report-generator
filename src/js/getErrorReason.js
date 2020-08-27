@@ -25,6 +25,9 @@ function getReason(message) {
   if (message.includes('AssertionError') && message.includes('expected') && message.includes('to contain')) {
     return '断言错误：元素未包含指定文本';
   }
+  if (message.includes('AssertionError') && message.includes('Timed out retrying')) {
+    return '断言错误：断言超时';
+  }
   if (message.includes('CypressError') && message.includes('detached from the DOM')) {
     return '运行错误：操作的元素状态已改变';
   }
@@ -35,10 +38,16 @@ function getReason(message) {
     return '运行错误：页面加载超时';
   }
   if (message.includes('CypressError') && message.includes('`cy.request()` failed')) {
-    return '运行错误：请求超时'
+    return '运行错误：请求异常'
   }
   if (message.includes('CypressError') && message.includes('timed out waiting')) {
     return '运行错误：执行超时'
+  }
+  if (message.includes('CypressError') && message.includes('Timed out retrying')) {
+    return '运行错误：重试超时'
+  }
+  if (message.includes('CypressError') && message.includes('can only be called on a single element')) {
+    return '运行错误：元素处理异常'
   }
   return message;
 }
