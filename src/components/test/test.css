@@ -33,6 +33,7 @@
 
 button {
   cursor: pointer;
+  line-height: initial;
 }
 
 .title {
