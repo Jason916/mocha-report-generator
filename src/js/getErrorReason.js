@@ -55,6 +55,9 @@ function getReason(message) {
   if (message.includes('is not defined at')) {
     return '申明错误：使用了未申明的变量或函数';
   }
+  if (message.includes('it targeted a disabled element')) {
+    return '运行错误：当前元素处于不可操作状态';
+  }
   return message;
 }
 
