@@ -58,6 +58,9 @@ function getReason(message) {
   if (message.includes('it targeted a disabled element')) {
     return '运行错误：当前元素处于不可操作状态';
   }
+  if (message.includes('A fixture file could not be found')) {
+    return '运行错误：无法找到对应的配置文件';
+  }
   return message;
 }
 

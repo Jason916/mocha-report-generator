@@ -1,6 +1,7 @@
 .DS_Store
 lib-cov
 *.log
+.idea
 
 node_modules
 mochawesome-report
